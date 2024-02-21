@@ -55,6 +55,18 @@ public class Buku26 {
 ##### Jawab : tampilInformasi(), terjual(int jml), restock(int jml), gantiHarga(int hrg).
 
 #### 4. Perhatikan method terjual() yang terdapat di dalam class Buku. Modifikasi isi method tersebut sehingga proses pengurangan hanya dapat dilakukan jika stok masih ada (lebih besar dari 0)!
+##### Jawab : 
+``` java
+    void terjual(int jml) {
+        if (stok > 0) {
+            stok -= jml;
+        } else {
+            System.out.println("Stok habis!");
+        }
+    }
+```
+##### Output :
+![alt text](<../Screenshot 2024-02-21 133832.png>)
 
 #### 5. Menurut Anda, mengapa method restock() mempunyai satu parameter berupa bilangan int?
 #### 6. Commit dan push kode program ke Github
