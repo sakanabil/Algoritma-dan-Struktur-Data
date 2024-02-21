@@ -13,8 +13,8 @@
 <p align = "center"> Absen : 26 </p>
 
 
-#### 2. Praktikum
-#### 2.1 Percobaan 1: Deklarasi Class, Atribut dan Method
+## 2. Praktikum
+### 2.1 Percobaan 1: Deklarasi Class, Atribut dan Method
 ``` java
 public class Buku26 {
     String judul, pengarang;
@@ -41,10 +41,10 @@ public class Buku26 {
     }
 }
 ```
-#### 2.1.2 Verifikasi Hasil Percobaan
+### 2.1.2 Verifikasi Hasil Percobaan
 ![Verivikasi](<../Screenshot (354).png>)
 
-#### 2.2 Percobaan 2: Instansiasi Object, serta Mengakses Atribut dan Method
+### 2.2 Percobaan 2: Instansiasi Object, serta Mengakses Atribut dan Method
 ``` java
 public class BukuMain26 {
     public static void main(String[] args) {
@@ -62,5 +62,5 @@ public class BukuMain26 {
     }
 }
 ```
-#### 2.2.2 Verifikasi Hasil Percobaan
+### 2.2.2 Verifikasi Hasil Percobaan
 ![verivikasi](<../Screenshot 2024-02-21 130700.png>)
