@@ -1,8 +1,8 @@
-# Week 04 - Collections, Records, & Functions
-Nama : Saka Nabil
-NIM : 2341720108
-Kelas : TI-1B
-Absen : 26
+# LAPORAN PRAKTIKUM II ALGORITMA DAN STRUKTUR DATA
+### Nama : Saka Nabil
+### NIM : 2341720108
+### Kelas : TI-1B
+### Absen : 26
 
 #### 2. Praktikum
 #### 2.1 Percobaan 1: Deklarasi Class, Atribut dan Method
