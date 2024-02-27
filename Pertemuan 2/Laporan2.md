@@ -175,4 +175,84 @@ public Buku26(String jud, String pg, int hal, int stok, int har) {
 <br>
 <br>
 
-### 2.4 Latihan Praktikum
+## 2.4 Latihan Praktikum
+### 1. LATIHAN 1
+``` java
+    int hitungHargaTotal() {
+        int totalHarga = harga * terjual;
+        return totalHarga;
+    }
+
+    int hitungDiskon() {
+        int totalHarga = hitungHargaTotal();
+        double diskon = 0;
+
+        if (totalHarga > 150000) {
+            diskon = 0.12;
+        } else if (totalHarga >= 75000) {
+            diskon = 0.05;
+        }
+        return (int) (totalHarga * diskon);
+    }
+
+    int hitungHargaBayar() {
+        int totalHarga = hitungHargaTotal();
+        int diskon = hitungDiskon();
+        return totalHarga - diskon;
+    }
+}
+```
+### Outputnya :
+![alt text](<../Screenshot 2024-02-27 210006.png>)
+<br>
+<br>
+
+### LATIHAN 2
+``` java
+public class Dragon26 {
+    int x, y, width, height;
+
+    Dragon26(int x, int y, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
+    void moveLeft() {
+        x--;
+        if (x < 0 || x > width) {
+            detectCollision();
+        }
+    }
+
+    void moveRight() {
+        x++;
+        if (x < 0 || x > width) {
+            detectCollision();
+        }
+    }
+
+    void moveUp() {
+        y--;
+        if (y < 0 || y > height) {
+            detectCollision();
+        }
+    }
+
+    void moveDown() {
+        y++;
+        if (y < 0 || y > height) {
+            detectCollision();
+        }
+    }
+
+    void printPosition() {
+        System.out.println("Posisi Dragon: (" + x + ", " + y + ")");
+    }
+
+    void detectCollision() {
+        System.out.println("Game Over");
+    }
+}
+```

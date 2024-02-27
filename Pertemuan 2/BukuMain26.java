@@ -19,5 +19,14 @@ public class BukuMain26 {
         Buku26 bukuSakaNabil = new Buku26("Bumi", "Tere Liye", 516, 11, 96000);
         bukuSakaNabil.terjual(10);
         bukuSakaNabil.tampilInformasi();
+
+        int totalHarga = bukuSakaNabil.hitungHargaTotal();
+        System.out.println("Total harga: Rp " + totalHarga);
+        
+        int diskon = bukuSakaNabil.hitungDiskon();
+        System.out.println("Diskon: " + diskon);
+        
+        int hitungHargaBayar = bukuSakaNabil.hitungHargaBayar();
+        System.out.println("Total bayar: Rp " + hitungHargaBayar);
     }
 }
