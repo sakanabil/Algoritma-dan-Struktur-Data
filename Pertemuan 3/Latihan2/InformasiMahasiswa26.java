@@ -24,12 +24,16 @@ public class InformasiMahasiswa26 {
         }
         System.out.println();
 
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Data Mahasiswa ke-" + (i + 1));
-            System.out.println("Nama: " + mahasiswa[i].nama);
-            System.out.println("NIM: " + mahasiswa[i].nim);
-            System.out.println("Jenis Kelamin: " + mahasiswa[i].jenisKelamin);
-            System.out.println("IPK: " + mahasiswa[i].ipk);
+            System.out.println();
+            double rataIPK = Mahasiswa26.hitungRataIPK(mahasiswa);
+            System.out.println("Rata-rata IPK: " + rataIPK);
+            System.out.println();
+
+            Mahasiswa26 IPKTerbesar = Mahasiswa26.mhsIPKTerbesar(mahasiswa);
+            System.out.println("Mahasiswa dengan IPK terbesar:");
+            System.out.println("Nama: " + IPKTerbesar.nama);
+            System.out.println("NIM: " + IPKTerbesar.nim);
+            System.out.println("Jenis Kelamin: " + IPKTerbesar.jenisKelamin);
+            System.out.println("IPK: " + IPKTerbesar.ipk);
         }
     }
-}
