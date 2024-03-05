@@ -324,4 +324,216 @@ Jawab :
 }
 ```
 
-### 3.5 Latihan Praktikum
+## 3.5 Latihan Praktikum
+#### Latihan 1
+#### Kerucut
+``` java
+package Latihan1;
+
+public class Kerucut26 {
+    double jariJari;
+    double sisiMiring;
+
+    public Kerucut26(double jariJari, double sisiMiring) {
+        this.jariJari = jariJari;
+        this.sisiMiring = sisiMiring;
+    }
+
+    public double hitungLuas() {
+        return Math.PI * jariJari * jariJari;
+    }
+
+    public double hitungVolume() {
+        return (1.0 / 3.0) * Math.PI * jariJari * jariJari * sisiMiring;
+    }
+}
+```
+#### Limas Segi Empat Sama Sisi
+``` java
+package Latihan1;
+
+public class Limas26 {
+    double sisiAlas;
+    double tinggi;
+
+    public Limas26(double sisiAlas, double tinggi) {
+        this.sisiAlas = sisiAlas;
+        this.tinggi = tinggi;
+    }
+    public double hitungLuasPermukaan() {
+        double luasAlas = sisiAlas * sisiAlas;
+        double luasSegitiga = (sisiAlas * tinggi) / 2;
+        return luasAlas + 4 * luasSegitiga;
+    }
+    public double hitungVolume() {
+        return (sisiAlas * sisiAlas * tinggi) / 3;
+    }
+}
+```
+
+#### Bola
+``` java
+package Latihan1;
+
+public class Bola26 {
+    double jariJari;
+    
+    public Bola26(double jariJari) {
+        this.jariJari = jariJari;
+    }
+    public double hitungLuasPermukaan() {
+        return 4 * Math.PI * jariJari * jariJari;
+    }
+    public double hitungVolume() {
+        return (4.0 / 3.0) * Math.PI * jariJari * jariJari * jariJari;
+    }
+}
+```
+#### Main Class
+``` java
+package Latihan1;
+
+import java.util.Scanner;
+
+public class ArrayOfObjects26 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Masukkan jumlah kerucut: ");
+        int jumlahKerucut = sc.nextInt();
+        Kerucut26[] kerucutArray = new Kerucut26[jumlahKerucut];
+
+        System.out.print("Masukkan jumlah limas segi empat: ");
+        int jumlahLimasSegiEmpat = sc.nextInt();
+        Limas26[] limasSegiEmpatArray = new Limas26[jumlahLimasSegiEmpat];
+
+        System.out.print("Masukkan jumlah bola: ");
+        int jumlahBola = sc.nextInt();
+        Bola26[] bolaArray = new Bola26[jumlahBola];
+
+        // Input Atribut Kerucut
+        for (int i = 0; i < jumlahKerucut; i++) {
+            System.out.println("Atribut kerucut ke-" + (i + 1));
+            System.out.print("Masukkan jari-jari: ");
+            int jariJari = sc.nextInt();
+            System.out.print("Masukkan sisi miring: ");
+            int sisiMiring = sc.nextInt();
+            kerucutArray[i] = new Kerucut26(jariJari, sisiMiring);
+            System.out.println();
+        }
+
+        // Input Atribut Limas Segi Empat
+        for (int i = 0; i < jumlahLimasSegiEmpat; i++) {
+            System.out.println("Atribut limas segi empat ke-" + (i + 1));
+            System.out.print("Masukkan panjang sisi alas: ");
+            int panjangSisiAlas = sc.nextInt();
+            System.out.print("Masukkan tinggi: ");
+            int tinggi = sc.nextInt();
+            limasSegiEmpatArray[i] = new Limas26(panjangSisiAlas, tinggi);
+            System.out.println();
+        }
+
+        // Input Atribut Bola
+        for (int i = 0; i < jumlahBola; i++) {
+            System.out.println("Atribut bola ke-" + (i + 1));
+            System.out.print("Masukkan jari-jari: ");
+            int jariJariBola = sc.nextInt();
+            bolaArray[i] = new Bola26(jariJariBola);
+            System.out.println();
+        }
+
+        // Print Kerucut
+        System.out.println("\nHasil Perhitungan Kerucut:");
+        for (int i = 0; i < jumlahKerucut; i++) {
+            System.out.println("Luas Permukaan kerucut ke-" + (i + 1) + ": " + kerucutArray[i].hitungLuas());
+            System.out.println("Volume kerucut ke-" + (i + 1) + ": " + kerucutArray[i].hitungVolume());
+            System.out.println();
+        }
+
+        // Print Limas Segi Empat
+        System.out.println("\nHasil Perhitungan Limas Segi Empat:");
+        for (int i = 0; i < jumlahLimasSegiEmpat; i++) {
+            System.out.println(
+                    "Luas Permukaan limas segi empat ke-" + (i + 1) + ": " + limasSegiEmpatArray[i].hitungLuasPermukaan());
+            System.out.println("Volume limas segi empat ke-" + (i + 1) + ": " + limasSegiEmpatArray[i].hitungVolume());
+            System.out.println();
+        }
+
+        // Print Bola
+        System.out.println("\nHasil Perhitungan Bola:");
+        for (int i = 0; i < jumlahBola; i++) {
+            System.out.println("Luas Permukaan bola ke-" + (i + 1) + ": " + bolaArray[i].hitungLuasPermukaan());
+            System.out.println("Volume bola ke-" + (i + 1) + ": " + bolaArray[i].hitungVolume());
+            System.out.println();
+        }
+    }
+}
+```
+
+#### Outputnya :
+![alt text](<../Screenshot 2024-03-05 200031.png>)
+
+<br>
+<br>
+
+#### Latihan 2
+```java
+package Latihan2;
+
+import java.util.Scanner;
+
+public class InformasiMahasiswa26 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Mahasiswa26[] mahasiswa = new Mahasiswa26[3];
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Masukkan data mahasiswa ke-" + (i + 1));
+            System.out.print("Masukkan nama: ");
+            String nama = sc.nextLine();
+            System.out.print("Masukkan NIM: ");
+            String nim = sc.nextLine();
+            System.out.print("Masukkan Jenis Kelamin: ");
+            String jenisKelamin = sc.nextLine();
+            System.out.print("Masukkan IPK: ");
+            double ipk = sc.nextDouble();
+            sc.nextLine();
+
+            mahasiswa[i] = new Mahasiswa26(nama, nim, jenisKelamin, ipk);
+        }
+        System.out.println();
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Data Mahasiswa ke-" + (i + 1));
+            System.out.println("Nama: " + mahasiswa[i].nama);
+            System.out.println("NIM: " + mahasiswa[i].nim);
+            System.out.println("Jenis Kelamin: " + mahasiswa[i].jenisKelamin);
+            System.out.println("IPK: " + mahasiswa[i].ipk);
+        }
+    }
+}
+```
+```java
+package Latihan2;
+
+public class Mahasiswa26 {
+    public String nama, nim, jenisKelamin;
+    public double ipk;
+
+    public Mahasiswa26(String nama, String nim, String jenisKelamin, double ipk) {
+        this.nama = nama;
+        this.nim = nim;
+        this.jenisKelamin = jenisKelamin;
+        this.ipk = ipk;
+    }
+}
+```
+
+#### Outputnya :
+![alt text](<../Screenshot 2024-03-05 202054.png>)
+
+<br>
+<br>
+
+#### Latihan 3
