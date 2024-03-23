@@ -112,3 +112,102 @@ public class Main26 {
 #### 5.2.2 Verifikasi Hasil Percobaan
 ![alt text](<../screenshots/Screenshot 2024-03-20 115326.png>)
 ![alt text](<../screenshots/Screenshot 2024-03-20 115450.png>)
+
+#### 5.2.3 Pertanyaan
+#### 1. Terdapat di method apakah proses bubble sort?
+    Jawab : ada di method bubbleShort()
+#### 2. Di dalam method bubbleSort(), terdapat baris program seperti di bawah ini:
+![alt text](<../screenshots/Screenshot 2024-03-23 232003.png>)
+#### Untuk apakah proses tersebut?
+    Jawab : digunakan untuk mengurutkan data array listMhs berdasarkan IPK mahasiswa. proses ini membandingkan IPK dua elemen array yang berdekatan dan menukan posisinya jika tidak terurut.
+#### 3. Perhatikan perulangan di dalam bubbleSort() di bawah ini:
+![alt text](<../screenshots/Screenshot 2024-03-23 232120.png>)
+#### a. Apakah perbedaan antara kegunaan perulangan i dan perulangan j? b. Mengapa syarat dari perulangan i adalah i<listMhs.length-1 ? c. Mengapa syarat dari perulangan j adalah j<listMhs.length-i ? d. Jika banyak data di dalam listMhs adalah 50, maka berapakali perulangan i akan berlangsung? Dan ada berapa Tahap bubble sort yang ditempuh?
+
+    Jawab : a. perulangan i dan j berguna untuk mengurutkan seluruh elemen array listMhs.
+    b. syarat i < listMhs.length - 1 pada perulangan luar Bubble Sort bertujuan untuk mengoptimalkan proses pengurutan dengan menghindari perbandingan elemen yang sudah terurut dan elemen di luar batas array.
+    c. syarat j < listMhs.length - i pada perulangan j membantu algoritma Bubble Sort untuk menghindari pengulangan yang tidak perlu pada elemen yang sudah terurut dan meningkatkan efisiensi dan performa algoritma.
+    d. Perulangan i pada Bubble Sort dengan 50 data akan berlangsung sebanyak 49 kali dan jumlah tahap Bubble Sort tergantung pada urutan data awal. best case memerlukan 1 tahap, sedangkan worst case memerlukan 49 tahap.
+
+### 5.3 Mengurutkan Data Mahasiswa Berdasarkan IPK Menggunakan Selection Sort
+#### 5.3.1. Langkah-langkah Percobaan
+#### CLASS
+```java
+    void selectionSort(){
+        for(int i=0; i<listMhs.length-1; i++){
+            int idxMin = i;
+            for(int j=i+1; j<listMhs.length; j++){
+                if(listMhs[j].ipk < listMhs[idxMin].ipk){
+                    idxMin = j;
+                }
+            }
+            Mahasiswa26 tmp = listMhs[idxMin];
+            listMhs[idxMin] = listMhs[i];
+            listMhs[i] = tmp;
+        }
+    }
+```
+#### MAIN
+```java
+            System.out.println("Data mahasiswa setelah sorting asc berdasarkan ipk");
+            list.selectionSort();
+            list.tampil();
+```
+#### 5.3.2. Verifikasi Hasil Percobaan
+![alt text](<../screenshots/Screenshot 2024-03-23 233834.png>)
+
+### 5.3.3. Pertanyaan
+#### Di dalam method selection sort, terdapat baris program seperti di bawah ini:
+![alt text](<../screenshots/Screenshot 2024-03-23 234225.png>)
+#### Untuk apakah proses tersebut, jelaskan!
+    Jawab : Proses tersebut merupakan bagian dari algoritma Selection Sort yang digunakan untuk menemukan indeks minimum dalam array listMhs. Proses ini membantu dalam mengurutkan elemen array berdasarkan IPK dari yang terendah hingga tertinggi.
+
+
+### 5.4 Mengurutkan Data Mahasiswa Berdasarkan IPK Menggunakan Insertion Sort
+#### 5.4.1 Langkah-langkah Percobaan
+#### CLASS
+```java
+    void insertionSort(){
+        for(int i=1; i<listMhs.length; i++){
+            Mahasiswa26 tmp = listMhs[i];
+            int j = i;
+            while(j>=0 && listMhs[j-1].ipk > tmp.ipk){
+                listMhs[j] = listMhs[j-1];
+                j--;
+            }
+            listMhs[j] = tmp;
+        }
+    }
+```
+#### MAIN
+```java
+            System.out.println("Data mahasiswa setelah sorting asc berdasarkan ipk (menggunakan insertion sort)");
+            list.insertionSort();
+            list.tampil();
+```
+#### 5.4.2 Verifikasi Hasil Percobaan
+![alt text](<../screenshots/Screenshot 2024-03-23 235221.png>)
+
+### 5.4.3 Pertanyaan
+#### Ubahlah fungsi pada InsertionSort sehingga fungsi ini dapat melaksanakan proses sorting dengan cara descending.
+    Jawab :
+```java
+     void insertionSort(){
+        for(int i=1; i<listMhs.length; i++){
+            Mahasiswa26 tmp = listMhs[i];
+            int j = i;
+            while(j>=1 && listMhs[j-1].ipk < tmp.ipk){
+                listMhs[j] = listMhs[j-1];
+                j--;
+            }
+            listMhs[j] = tmp;
+        }
+    }
+```
+#### Outputnya
+![alt text](<../screenshots/Screenshot 2024-03-23 235759.png>)
+
+
+
+
+
