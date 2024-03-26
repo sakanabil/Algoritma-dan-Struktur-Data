@@ -13,7 +13,7 @@
 <p align = "center"> Absen : 26 </p>
 
 
-## JOBSHEET - 5
+## JOBSHEET - V
 ## SORTING BUBBLE, SELECTION, DAN INSERTION SORT
 
 ### 5.2.1 Langkah-langkah Percobaan
@@ -207,7 +207,132 @@ public class Main26 {
 #### Outputnya
 ![alt text](<../screenshots/Screenshot 2024-03-23 235759.png>)
 
+### Latihan Praktikum
+#### Sebuah platform travel yang menyediakan layanan pemesanan kebutuhan travelling sedang mengembangkan backend untuk sistem pemesanan/reservasi akomodasi (penginapan), salah satu fiturnya adalah menampilkan daftar penginapan yang tersedia berdasarkan pilihan filter yang diinginkan user. Daftar penginapan ini harus dapat disorting berdasarkan
+
+#### 1. Harga dimulai dari harga termurah ke harga tertinggi.
+#### 2. Rating bintang penginapan dari bintang tertinggi (5) ke terendah (1)
+
+#### Buatlah proses sorting data untuk kedua filter tersebut dengan menggunakan algoritma bubble sort dan selection sort.
+
+![alt text](<../screenshots/Screenshot 2024-03-26 172002.png>)
 
 
 
 
+#### CLASS HOTEL
+```java
+package Pertemuan6;
+
+public class Hotel25 {
+    String nama, kota;
+    int harga;
+    Byte rating;
+
+    Hotel25(String n, String k, int h, Byte r) {
+        nama = n;
+        kota = k;
+        harga = h;
+        rating = r;
+    }
+
+    void tampil() {
+        System.out.println("Nama : " + nama);
+        System.out.println("Kota : " + kota);
+        System.out.println("Harga : Rp." + harga);
+        System.out.println("Bintang : " + rating);
+    }
+}
+
+```
+
+#### CLASS HOTELSERVICE
+```java
+package Pertemuan6;
+
+public class HotelService25 {
+    Hotel25 hotel[] = new Hotel25[5];
+    int idx;
+
+    void tambah(Hotel25 h) {
+        if (idx < hotel.length) {
+            hotel[idx] = h;
+            idx++;
+        } else {
+            System.out.println("Hotel sudah penuh!");
+        }
+    }
+
+    void tampil() {
+        for (Hotel25 h : hotel) {
+            h.tampil();
+        }
+    }
+
+    public void bubbleSort() {
+        for (int i = 0; i < idx - 1; i++) {
+            for (int j = 0; j < idx - i - 1; j++) {
+                if (hotel[j].harga > hotel[j + 1].harga) {
+                    Hotel25 tmp = hotel[j];
+                    hotel[j] = hotel[j + 1];
+                    hotel[j + 1] = tmp;
+                }
+            }
+        }
+    }
+
+    public void selectionSort() {
+        for (int i = 0; i < idx - 1; i++) {
+            int idxMax = i;
+            for (int j = i + 1; j < idx; j++) {
+                if (hotel[j].rating > hotel[idxMax].rating) {
+                    idxMax = j;
+                }
+            }
+            Hotel25 tmp = hotel[idxMax];
+            hotel[idxMax] = hotel[i];
+            hotel[i] = tmp;
+        }
+    }
+}
+```
+
+#### MAIN HOTEL
+```java
+package Pertemuan6;
+
+public class MainHotel25 {
+    public static void main(String[] args) {
+        HotelService25 list = new HotelService25();
+        Hotel25 h1 = new Hotel25("Hotel A", "Malang", 350000, (byte) 4);
+        Hotel25 h2 = new Hotel25("Hotel B", "Surabaya", 200000, (byte) 2);
+        Hotel25 h3 = new Hotel25("Hotel C", "Mataram", 150000, (byte) 1);
+        Hotel25 h4 = new Hotel25("Hotel D", "Jakarta", 400000, (byte) 5);
+        Hotel25 h5 = new Hotel25("Hotel E", "Bogor", 125000, (byte) 3);
+
+        list.tambah(h1);
+        list.tambah(h2);
+        list.tambah(h3);
+        list.tambah(h4);
+        list.tambah(h5);
+
+        System.out.println("Data Hotel sebelum sorting : ");
+        list.tampil();
+        System.out.println("");
+
+        System.out.println("Data Hotel setelah disorting berdasarkan Harga (Ascending)");
+        list.bubbleSort();
+        list.tampil();
+        System.out.println("");
+
+        System.out.println("Data Hotel setelah disorting berdasarkan Bintang (Descending)");
+        list.selectionSort();
+        list.tampil();
+    }
+}
+```
+
+#### Outputnya
+![alt text](<../screenshots/Screenshot 2024-03-26 173959.png>)
+![alt text](<../screenshots/Screenshot 2024-03-26 174010.png>)
+![alt text](<../screenshots/Screenshot 2024-03-26 174018.png>)
