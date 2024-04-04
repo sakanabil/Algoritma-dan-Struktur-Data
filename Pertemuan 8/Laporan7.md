@@ -395,3 +395,214 @@ public class PostfixMain25 {
 ![alt text](<screenshots/Screenshot 2024-04-03 130745.png>)
 <br>
    Jawab : Potongan kode c = Q.charAt(i); berfungsi untuk mengambil karakter pada indeks ke-i dari string Q dan menyimpannya ke dalam variabel c.
+
+### Latihan Praktikum
+#### Perhatikan dan gunakan kembali kode program pada Percobaan 1. Tambahkan dua method berikut pada class Gudang:
+#### • Method lihatBarangTerbawah digunakan untuk mengecek barang pada tumpukan terbawah
+#### • Method cariBarang digunakan untuk mencari ada atau tidaknya barang berdasarkan kode barangnya atau nama barangnya
+    Jawab: 
+#### CLASS GUDANG25
+```java
+public class Gudang25 {
+    Barang25[] tumpukan;
+    int size, top;
+
+    public Gudang25(int kapasitas) {
+        size = kapasitas;
+        tumpukan = new Barang25[size];
+        top = -1;
+    }
+
+    public boolean cekKosong() {
+        if (top == -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean cekPenuh() {
+        if (top == size - 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void tambahBarang(Barang25 brg) {
+        if (!cekPenuh()) {
+            top++;
+            tumpukan[top] = brg;
+            System.out.println("Barang " + brg.nama + " berhasil ditambahkan ke Gudang");
+        } else {
+            System.out.println("Gagal! Tumpukan barang di Gudang sudah penuh");
+        }
+    }
+
+    public Barang25 ambilBarang() {
+        if (!cekKosong()) {
+            Barang25 delete = tumpukan[top];
+            top--;
+            System.out.println("Barang " + delete.nama + " diambil dari Gudang.");
+            System.out.println("Kode unik dalam biner: " + konversiDesimalKeBiner(delete.kode));
+            return delete;
+        } else {
+            System.out.println("Tumpukan barang kosong.");
+            return null;
+        }
+    }
+
+    public Barang25 lihatBarangTeratas() {
+        if (!cekKosong()) {
+            Barang25 barangTeratas = tumpukan[top];
+            System.out.println("Barang teratas: " + barangTeratas.nama);
+            return barangTeratas;
+        } else {
+            System.out.println("Tumpukan barang kosong.");
+            return null;
+        }
+    }
+
+    public void tampilkanBarang() {
+        if (!cekKosong()) {
+            System.out.println("Rincian tumpukan barang di Gudang:");
+            //for (int i = top; i >= 0; i--) {
+            for (int i = top; i >= 0; i--) {
+                System.out.printf("Kode %s: %s (Kategori %s)\n", tumpukan[i].kode, tumpukan[i].nama, tumpukan[i].kategori);
+            }
+        } else {
+            System.out.println("Tumpukan barang kosong.");
+        }
+    }
+
+    public String konversiDesimalKeBiner(int kode) {
+        StackKonversi25 stack = new StackKonversi25();
+        while (kode != 0) {
+            int sisa = kode % 2;
+            stack.push(sisa);
+            kode = kode / 2;
+        }
+        String biner = new String();
+        while (!stack.isEmpty()) {
+            biner += stack.pop();
+        }
+        return biner;
+    }
+    
+    public Barang25 lihatBarangTerbawah() {
+        if (!cekKosong()) {
+            Barang25 barangTerbawah = tumpukan[0];
+            System.out.println("Barang terbawah: " + barangTerbawah.nama);
+            return barangTerbawah;
+        } else {
+            System.out.println("Tumpukan barang kosong.");
+            return null;
+        }
+    }
+
+    public Barang25 cariBarangKode(int kodeBarang) {
+        for (int i = 0; i <= top; i++) {
+            if (tumpukan[i].kode == kodeBarang) {
+                return tumpukan[i];
+            }
+        }
+        return null;
+    }
+
+    public Barang25 cariBarangNama(String namaBarang) {
+        for (int i = 0; i <= top; i++) {
+            if (tumpukan[i].nama.equals(namaBarang)) {
+                return tumpukan[i];
+            }
+        }
+        return null;
+    }
+}
+```
+#### CLASS UTAMA25
+```java
+import java.util.Scanner;
+public class Utama25 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Masukkan kapasitas Gudang: ");
+        int kapasitas = scanner.nextInt();
+        Gudang25 gudang = new Gudang25(kapasitas);
+        
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Tambah barang");
+            System.out.println("2. Ambil barang");
+            System.out.println("3. Tampilkan tumpukan barang");
+            System.out.println("4. Tampilkan barang teratas");
+            System.out.println("5. Tampilkan barang terbawah");
+            System.out.println("6. Cari barang berdasarkan kode");
+            System.out.println("7. Cari barang berdasarkan nama");
+            System.out.println("8. Keluar");
+            System.out.print("Pilih operasi: ");
+            int pilihan = scanner.nextInt();
+            scanner.nextLine();
+        
+            switch (pilihan) {
+                case 1:
+                    System.out.print("Masukkan kode barang: ");
+                    int kode = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Masukkan nama barang: ");
+                    String nama = scanner.nextLine();
+                    System.out.print("Masukkan nama kategori: ");
+                    String kategori = scanner.nextLine();
+                    Barang25 barangBaru = new Barang25(kode, nama, kategori);
+                    gudang.tambahBarang(barangBaru);
+                    break;
+                case 2:
+                    gudang.ambilBarang();
+                    break;
+                case 3:
+                    gudang.tampilkanBarang();
+                    break;
+                case 4:
+                    gudang.lihatBarangTeratas();
+                    break;
+                case 5:
+                    gudang.lihatBarangTerbawah();
+                    break;
+                case 6:
+                    System.out.println("Masukkan kode barang yang ingin dicari: ");
+                    int kodeCari = scanner.nextInt();
+                    Barang25 barangDitemukanKode = gudang.cariBarangKode(kodeCari);
+                    if (barangDitemukanKode != null) {
+                        System.out.println("Barang ditemukan berdasarkan kode: " + barangDitemukanKode.nama);
+                    } else {
+                        System.out.println("Barang tidak ditemukan.");
+                    }
+                    break;
+                case 7:
+                    System.out.println("Masukkan nama barang yang ingin dicari: ");
+                    String namaCari = scanner.nextLine();
+                    Barang25 barangDitemukanNama = gudang.cariBarangNama(namaCari);
+                    if (barangDitemukanNama != null) {
+                        System.out.println("Barang ditemukan berdasarkan nama: " + barangDitemukanNama.nama);
+                    } else {
+                        System.out.println("Barang tidak ditemuka.");
+                    }
+                    break;
+                case 8:
+                    System.out.println("Keluar dari program.");
+                    break;
+                default:
+                    System.out.println("Pilihan tidak valid. Silakan coba lagi.");
+                
+            }
+        }
+    }
+}
+```
+
+#### Outputnya
+![alt text](<screenshots/Screenshot 2024-04-04 202458.png>)
+<br>
+
+![alt text](<screenshots/Screenshot 2024-04-04 202521.png>)

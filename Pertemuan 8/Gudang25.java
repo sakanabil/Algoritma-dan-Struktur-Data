@@ -82,5 +82,34 @@ public class Gudang25 {
             biner += stack.pop();
         }
         return biner;
-    }   
+    }
+    
+    public Barang25 lihatBarangTerbawah() {
+        if (!cekKosong()) {
+            Barang25 barangTerbawah = tumpukan[0];
+            System.out.println("Barang terbawah: " + barangTerbawah.nama);
+            return barangTerbawah;
+        } else {
+            System.out.println("Tumpukan barang kosong.");
+            return null;
+        }
+    }
+
+    public Barang25 cariBarangKode(int kodeBarang) {
+        for (int i = 0; i <= top; i++) {
+            if (tumpukan[i].kode == kodeBarang) {
+                return tumpukan[i];
+            }
+        }
+        return null;
+    }
+
+    public Barang25 cariBarangNama(String namaBarang) {
+        for (int i = 0; i <= top; i++) {
+            if (tumpukan[i].nama.equals(namaBarang)) {
+                return tumpukan[i];
+            }
+        }
+        return null;
+    }
 }
