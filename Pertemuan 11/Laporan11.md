@@ -135,7 +135,7 @@ public class SLLMain25 {
 
 ### Pertanyaan
 #### 1. Mengapa hasil compile kode program di baris pertama menghasilkan “Linked List Kosong”?
-    Jawab : 
+    Jawab : Baris pertama memanggil method 'print()' dari sebuah objek 'SingleLinkedList25' yang baru dibuat. Ketika objek tersebut dibuat, linked list masih kosong karena 'head' dan 'tail' diinisialisasi sebagai 'null'. Oleh karena itu, ketika 'print()' dipanggil, kondisi 'isEmpty()' mengembalikan 'true', dan pesan "Linked List kosong" dicetak.
 #### 2. Jelaskan kegunaan variable temp secara umum pada setiap method!
     Jawab : Variable temp digunakan dalam setiap metode untuk menyimpan referensi ke node saat ini saat melakukan iterasi atau manipulasi linked list.
 #### 3. Perhatikan class SingleLinkedList, pada method insertAt Jelaskan kegunaan kode berikut
@@ -348,12 +348,14 @@ public class SLLMain25 {
 ![alt text](<screenshots/Screenshot 2024-05-22 071556.png>)
 ### Pertanyaan
 #### 1. Mengapa digunakan keyword break pada fungsi remove? Jelaskan!
+    Jawab : break memastikan pencarian berhenti setelah node yang tepat ditemukan dan dihapus.
 #### 2. Jelaskan kegunaan kode dibawah pada method remove
 ```java
 else if (temp.next.data == key) {
     temp.next = temp.next.next;
 }
 ```
+    Jawab : Baris kode temp.next = temp.next.next; pada metode remove digunakan untuk menghapus node yang ditemukan dari linked list.
 
 ### TUGAS
 #### 1. Implementasikan ilustrasi Linked List Berikut. Gunakan 4 macam penambahan data yang telah dipelajari sebelumnya untuk menginputkan data.
