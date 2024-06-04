@@ -262,11 +262,15 @@ public class DoubleLinkedListsMain25 {
 #### 1. Apakah maksud statement berikut pada method removeFirst()?
 #### head = head.next;
 #### head.prev = null;
+    Jawab : Jika linked list memiliki lebih dari satu elemen, maka statement head = head.next; digunakan untuk mengatur head ke elemen selanjutnya di dalam linked list. Statement head.prev = null; digunakan untuk menghapus referensi ke elemen sebelumnya (yang sekarang menjadi head) sehingga tidak ada referensi balik ke elemen yang telah dihapus.
 #### 2. Bagaimana cara mendeteksi posisi data ada pada bagian akhir pada method removeLast()?
+    Jawab : Untuk mendeteksi posisi data pada bagian akhir dalam method removeLast(), Anda dapat menggunakan loop while yang berhenti ketika current.next adalah null. Kemudian, setelah loop berhenti, current akan merujuk ke elemen terakhir.
 #### 3. Jelaskan alasan potongan kode program di bawah ini tidak cocok untuk perintah remove!
 ![alt text](<screenshots/Screenshot 2024-06-04 214423.png>)
+    Jawab : Kode program itu tidak cocok untuk perintah remove karena tidak menghapus elemen dengan benar.Potongan kode tersebut mengambil elemen kedua dari double linked list dan menghapusnya dari double linked list. Namun, tidak memperbarui referensi balik dari elemen sebelumnya ke elemen setelah elemen yang dihapus.
 #### 4. Jelaskan fungsi kode program berikut ini pada fungsi remove!
 ![alt text](<screenshots/Screenshot 2024-06-04 214451.png>)
+    Jawab : Fungsi kode program tersebut pada fungsi removeLast() digunakan untuk menghapus elemen terakhir dari double linked list.
 
 ### Percobaan 3
 #### CLASS DoubleLinkedLists25
@@ -326,10 +330,14 @@ public class DoubleLinkedListsMain25 {
 
 ### Pertanyaan
 #### 1. Jelaskan method size() pada class DoubleLinkedLists!
+    Jawab : Method size() pada kelas DoubleLinkedLists digunakan untuk mengembalikan jumlah elemen atau size linked list yang ada.
 #### 2. Jelaskan cara mengatur indeks pada double linked lists supaya dapat dimulai dari indeks ke 1!
+    Jawab : Inisialisasi index dan size menjadi 1.
 #### 3. Jelaskan perbedaan karakteristik fungsi Add pada Double Linked Lists dan Single Linked Lists! 
+    Jawab :  Perbedaan fungsi add antara Double Linked Lists dan Single Linked Lists adalah bagaimana elemen ditambahkan ke awal dan akhir linked list. Double Linked Lists memiliki dua metode addFirst dan addLast yang memungkinkan penambahan elemen ke kedua sisi linked list, sedangkan Single Linked Lists hanya memiliki satu metode addLast untuk menambahkan elemen ke akhir linked list.
 #### 4. Jelaskan perbedaan logika dari kedua kode program di bawah ini
 ![alt text](<screenshots/Screenshot 2024-06-04 215404.png>)
+    Jawab : Perbedaan antara kedua program tersebut adalah bagaimana method isEmpty menggunakan variabel size atau head untuk mengecek apakah linked list kosong atau tidak. Program pertama menggunakan size untuk mengecek apakah linked list kosong atau tidak, sedangkan program kedua menggunakan head untuk mengecek apakah linked list kosong atau tidak.
 
 ### Tugas
 #### 1. Buat program antrian vaksinasi menggunakan queue berbasis double linked list sesuai ilustrasi dan menu di bawah ini! (counter jumlah antrian tersisa di menu cetak(3) dan data orang yang telah divaksinasi di menu Hapus Data(2) harus ada)
