@@ -3,34 +3,32 @@ public class Graph25 {
     DoubleLinkedList25 list[];
 
     public Graph25(int v) {
-            vertex = v;
-            list = new DoubleLinkedList25[v];
-            for (int i=0; i < v; i++) {
-                list[i] = new DoubleLinkedList25();
+        vertex = v;
+        list = new DoubleLinkedList25[v];
+        for (int i = 0; i < v; i++) {
+            list[i] = new DoubleLinkedList25();
         }
     }
 
     public void addEdge(int asal, int tujuan, int jarak) {
-        list[asal].addFirst(tujuan, jarak);
+        list[asal].addFirst(tujuan, jarak); //directed
     }
-        
 
     public void degree(int asal) throws Exception {
-        int k, totalin = 0, totalout = 0;
-            for (int i = 0; i < vertex; i++) {
-                for (int j = 0; j < list[i].size(); j++) {
-                    if (list[i].get(j) == asal) {
-                        ++totalin;
-                    }
-                }
-            for (k = 0; k < list[asal].size(); k++) {
-                    list[asal].get(k);
-                }
-                totalout = k;
+        int k, totalIn = 0, totalOut = 0;
+        for(int i = 0; i < vertex; i++){
+            for(int j = 0; j < list[i].size(); j++){
+                if(list[i].get(j) == asal)
+                    ++totalIn;
             }
-        System.out.println("InDegree dari Gedung " + (char) ('A' +asal) + ":" + totalin); 
-        System.out.println("OutDegree dari Gedung " + (char) ('A' + asal) + ":" + totalout);
-        System.out.println("Degree dari Gedung " +(char) ('A' +asal)+":"+ (totalin + totalout));
+            for(k = 0; k < list[asal].size(); k++){
+                list[asal].get(k);
+            }
+            totalOut = k;
+        }
+        System.out.println("InDegree dari Gedung " +(char) ('A' + asal) + ": " + totalIn);
+        System.out.println("OutDegree dari Gedung " +(char) ('A' + asal) + ": " + totalOut);
+        System.err.println("Degree dari Gedung " +(char) ('A' + asal) + ": " + (totalIn + totalOut));
     }
 
     public void removeEdge(int asal, int tujuan) throws Exception {
@@ -42,22 +40,61 @@ public class Graph25 {
     }
 
     public void removeAllEdges() {
-        for (int i=0; i < vertex; i++) {
-        list[i].clear();
+        for (int i = 0; i < vertex; i++) {
+            list[i].clear();
         }
-        System.out.println("Graph berhasil dikosongkan");
+        System.out.println("Graf berhasil dikosongkan");
     }
 
     public void printGraph() throws Exception {
-        for (int i=0; i < vertex; i++) { 
+        for (int i = 0; i < vertex; i++) {
             if (list[i].size() > 0) {
-                System.out.println("Gedung " + (char) ('A'+ i)+" terhubung dengan ");
+                System.out.println("Gedung " + (char) ('A' + i) + " terhubung dengan ");
                 for (int j = 0; j < list[i].size(); j++) {
-                    System.out.print((char) ('A' + list[i].get(j))+" ("+ list[i].getJarak(j)+"m), ");
-                    }
+                    System.out.print((char) ('A' + list[i].get(j)) + " (" + list[i].getJarak(j) + "m),");
+                }
                 System.out.println("");
             }
         }
         System.out.println("");
+    }
+
+    public void cekEdge(int asal, int tujuan) throws Exception {
+        boolean found = false;
+        for (int i = 0; i < list[asal].size(); i++) {
+            if (list[asal].get(i) == tujuan) {
+                found = true;
+            break;
+            }
+        }
+        if (found) {
+            System.out.println("Gedung " + (char) ('A' + asal) + " Dan " + (char) ('A' + tujuan) + " Bertetangga");
+        } else {
+            System.out.println("Gedung " + (char) ('A' + asal) + " Dan " + (char) ('A' + tujuan) + " Tidak Bertetangga");
+        }
+    }
+
+    public void updateJarak(int asal, int tujuan, int jarak) throws Exception{
+        boolean found = false;
+        for (int i = 0; i < list[asal].size(); i++) {
+            if (list[asal].get(i) == tujuan) {
+                list[asal].updateJarak(i, jarak);
+                found = true;
+                break;
+            }
+        }
+        if (found) {
+            System.out.println("Berhasil diupdate");
+        } else {
+            System.out.println("Edge tidak ditemukan");
+        }
+    }
+
+    public int hitungEdge() {
+        int totalEdges = 0;
+        for (int i = 0; i < vertex; i++) {
+            totalEdges += list[i].size();
+        }
+        return totalEdges;
     }
 }

@@ -50,4 +50,21 @@ public class GraphMatriks25 {
     public int totalDegree(int vertex) {
         return inDegree(vertex) + outDegree(vertex);
     }
+
+    public void degree(int asal) {
+        int totalIn = 0, totalOut = 0;
+        for(int i = 0; i < vertex; i++){
+            if (matriks[i][asal] != 0) {
+            totalIn++;
+            }
+        }
+        for (int i = 0; i < vertex; i++) {
+            if (matriks[asal][i] != 0) {
+            totalOut++;
+            }
+        }
+        System.out.println("InDegree dari gedung " + (char)('A' + asal) + " : " + totalIn);
+        System.out.println("OutDegree dari gedung " + (char)('A' + asal) + " : " + totalOut);
+        System.out.println("Degree dari gedung " + (char)('A' + asal) + " : " + (totalIn + totalOut)); 
+    }
 }
